@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2018_10_03_140010) do
-
   create_table "issues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,4 +34,9 @@ ActiveRecord::Schema.define(version: 2018_10_03_140010) do
     t.index ["item_id", "user_id", "issue_id"], name: "index_votes_on_item_id_and_user_id_and_issue_id", unique: true
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
