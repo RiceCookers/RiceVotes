@@ -13,6 +13,7 @@
                 .card.p-2
                   .card-body
                     %h5= item.name
+                    = cl_image_tag(item.image, width: "100%", class: "p-3")
                     - if signed_in? && !current_user.issues.include?(issue)
                       = form_with(model: @vote, url: issue_votes_path(issue), local: true) do |form|
                         = form.hidden_field :item_id, value: item.id
@@ -27,4 +28,3 @@
           - if current_user.issues.include?(issue)
             .text-center
               %p.mt-3 ありがとうございます。投票済みです🙇‍♂️
-
