@@ -15,6 +15,8 @@ gem 'bootstrap'
 gem 'devise'
 gem 'rails_admin'
 gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'cloudinary'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
