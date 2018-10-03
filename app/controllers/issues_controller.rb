@@ -8,6 +8,7 @@ class IssuesController < ApplicationController
 
   def new
     @issue = Issue.new
+    @vote = Vote.new
   end
 
   def create

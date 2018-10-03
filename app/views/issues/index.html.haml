@@ -5,3 +5,12 @@
   = issue.title
   %p ディスクリプション
   = issue.description
+
+  - issue.items.each do |item|
+    = item.name
+
+    = form_with(model: @vote, url: issue_votes_path, local: true) do |form|
+      = form.hidden_field :issue_id, value: issue.id
+      = form.hidden_field :item_id, value: item.id
+      = form.hidden_field :user_id, value: current_user.id
+      = form.submit
