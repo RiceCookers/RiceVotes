@@ -2,6 +2,21 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "RiceVotes", :property => "og:title"}/
+    %meta{:content => "website", :property => "og:type"}/
+    %meta{:content => "https://ricevotes.herokuapp.com", :property => "og:url"}/
+    %meta{:content => "#{ image_url "shared_image.png"}", :property => "og:image"}/
+    %meta{:content => "RiceVotes", :property => "og:site_name"}/
+    %meta{:content => "すいはんき工房の企画にあなたが投票ができるサービス", :property => "og:description"}/
+    -# Twitter用
+    %meta{:content => "summary", :name => "twitter:card"}/
+    %meta{:content => "@Twitter", :name => "twitter:site"}/
+    %meta{:content => "投票 | すいはんき工房", :name => "twitter:title"}/
+    %meta{:content => "https://ricevotes.herokuapp.com", :name => "twitter:url"}/
+    %meta{:content => "すいはんき工房の企画にあなたが投票ができるサービス", :name => "twitter:description"}/
+    %meta{:content => "#{ image_url "shared_image.png"}", :name => "twitter:image"}/
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     %title VoteApp
     = csrf_meta_tags
     = csp_meta_tag
