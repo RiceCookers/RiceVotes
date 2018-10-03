@@ -1,18 +1,30 @@
-%h1 Issues#index
+.container
+  %h1.mt-2 投票できるもの一覧！
 
-- @issues.each do |issue|
-  .p-2
-    .card
-      .card-body
-        %h5= issue.title
-        %p.card-text= issue.description
-        .row
-          - issue.items.each do |item|
-            .col
-              .card.p-2
-                .card-body
-                  %h5= item.name
-                  - if signed_in? && !current_user.issues.include?(issue)
-                    = form_with(model: @vote, url: issue_votes_path(issue), local: true) do |form|
-                      = form.hidden_field :item_id, value: item.id
-                      = form.submit "投票する", class: "btn btn-primary"
+  - @issues.each do |issue|
+    .p-2
+      .card
+        .card-body
+          %h5= issue.title
+          %p.card-text= issue.description
+          .row
+            - issue.items.each do |item|
+              .col-sm-12.col-md-6
+                .card.p-2
+                  .card-body
+                    %h5= item.name
+                    - if signed_in? && !current_user.issues.include?(issue)
+                      = form_with(model: @vote, url: issue_votes_path(issue), local: true) do |form|
+                        = form.hidden_field :item_id, value: item.id
+                        = form.submit "投票する", class: "btn btn-primary"
+                    - else
+                      - base_count = issue.votes.count
+                      - item_count = issue.votes.where(item: item).count
+                      - rate = ((item_count / base_count.to_f) * 100).round
+                      .progress
+                        .progress-bar{ "aria-valuenow" => item_count, style: "width: #{rate}%", "aria-valuemin" => "0", "aria-valuemax" => base_count }
+                      #{rate}%
+          - if current_user.issues.include?(issue)
+            .text-center
+              %p.mt-3 ありがとうございます。投票済みです🙇‍♂️
+
