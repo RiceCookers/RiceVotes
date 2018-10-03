@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :set_session_id
-  helper_method :signed_in?
+  helper_method :signed_in?, :current_user
 
   private
 
