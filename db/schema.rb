@@ -9,10 +9,39 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+ActiveRecord::Schema.define(version: 2018_10_03_141026) do
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+  end
 
 ActiveRecord::Schema.define(version: 2018_10_03_142120) do
 
   create_table "issues", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "issue_id"
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_items_on_issue_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "user_id"
+    t.integer "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
