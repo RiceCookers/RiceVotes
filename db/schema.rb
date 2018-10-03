@@ -10,10 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_140010) do
+ActiveRecord::Schema.define(version: 2018_10_03_142120) do
+
   create_table "issues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
+    t.string "description"
   end
 
   create_table "items", force: :cascade do |t|
@@ -25,6 +28,12 @@ ActiveRecord::Schema.define(version: 2018_10_03_140010) do
     t.index ["issue_id"], name: "index_items_on_issue_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "votes", force: :cascade do |t|
     t.integer "item_id"
     t.integer "user_id"
@@ -34,9 +43,4 @@ ActiveRecord::Schema.define(version: 2018_10_03_140010) do
     t.index ["item_id", "user_id", "issue_id"], name: "index_votes_on_item_id_and_user_id_and_issue_id", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "session_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 end
