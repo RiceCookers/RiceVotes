@@ -11,6 +11,12 @@ class IssuesController < ApplicationController
   end
 
   def create
+    @issue = Issue.new(issue_params)
+    if @issue.save
+      redirect_to root_path
+    else
+      redner :new
+    end
   end
 
   def edit
@@ -18,4 +24,10 @@ class IssuesController < ApplicationController
 
   def destroy
   end
+
+  private
+
+    def issue_params
+      params.require(:issue).permit(:title, :description)
+    end
 end
