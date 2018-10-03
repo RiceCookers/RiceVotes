@@ -1,17 +1,24 @@
 class VotesController < ApplicationController
+  before_action :set_issue, :set_item
+
   def create
-    @vote = Vote.new(vote_params)
-    if @vote.save
+    vote = @item.votes.build(user: current_user, issue: @issue)
+
+    if vote.save
       redirect_to root_path
     else
-      flash[:error] = "fail"
+      flash[:error] = "Sorry...Error...!"
       redirect_to root_path
     end
   end
 
   private
 
-    def vote_params
-      params.require(:vote).permit(:item_id, :user_id, :issue_id)
+    def set_issue
+      @issue = Issue.find(params[:issue_id])
+    end
+
+    def set_item
+      @item = @issue.items.find(params[:item_id])
     end
 end
