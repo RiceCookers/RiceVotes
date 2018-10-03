@@ -1,14 +1,18 @@
 %h1 Issues#index
 
 - @issues.each do |issue|
-  %p タイトル
-  = issue.title
-  %p ディスクリプション
-  = issue.description
-
-  - issue.items.each do |item|
-    = item.name
-    - if signed_in? && !current_user.issues.include?(issue)
-      = form_with(model: @vote, url: issue_votes_path(issue), local: true) do |form|
-        = form.hidden_field :item_id, value: item.id
-        = form.submit "投票する"
+  .p-2
+    .card
+      .card-body
+        %h5= issue.title
+        %p.card-text= issue.description
+        .row
+          - issue.items.each do |item|
+            .col
+              .card.p-2
+                .card-body
+                  %h5= item.name
+                  - if signed_in? && !current_user.issues.include?(issue)
+                    = form_with(model: @vote, url: issue_votes_path(issue), local: true) do |form|
+                      = form.hidden_field :item_id, value: item.id
+                      = form.submit "投票する", class: "btn btn-primary"
