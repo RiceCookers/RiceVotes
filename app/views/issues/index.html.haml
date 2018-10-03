@@ -9,16 +9,18 @@
           %p.card-text= issue.description
           .row
             - issue.items.each do |item|
-              .col-sm-12.col-md-6
+              .col-sm-12.col-md-6.mb-3
                 .card.p-2
                   .card-body
                     %h5= item.name
-                    .vote-image.mb-3
-                      = cl_image_tag(item.image, width: "100%", class: "p-3")
+                    .vote-image.mb-3.text-center
+                      = image_tag item.image_url(:thumb)
+                      -#= cl_image_tag(item.image, width: "100%", class: "p-3")
                     - if signed_in? && !current_user.issues.include?(issue)
                       = form_with(model: @vote, url: issue_votes_path(issue), local: true) do |form|
                         = form.hidden_field :item_id, value: item.id
-                        = form.submit "投票する", class: "btn btn-primary"
+                        .text-center
+                          = form.submit "投票する", class: "btn btn-primary"
                     - else
                       - base_count = issue.votes.count
                       - item_count = issue.votes.where(item: item).count
