@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   def index
-
+    @issues = Issue.all
   end
 
   def show
@@ -13,7 +13,7 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.new(issue_params)
     if @issue.save
-      redirect_to root_path
+      redirect_to issues_path
     else
       redner :new
     end

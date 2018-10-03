@@ -1,2 +1,7 @@
 %h1 Issues#index
-%p Find me in app/views/issues/index.html.haml
+
+- @issues.each do |issue|
+  %p タイトル
+  = issue.title
+  %p ディスクリプション
+  = issue.description
