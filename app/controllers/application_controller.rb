@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-      @user ||= User.find_or_create_by(session_id: session[:session_id])
+      @user ||= User.find_or_create_by(session_id: cookies[:session_id])
     end
 
     def set_session_id
-      session[:session_id] ||= SecureRandom.uuid
+      cookies[:session_id] ||= session[:session_id] || SecureRandom.uuid
     end
 end
