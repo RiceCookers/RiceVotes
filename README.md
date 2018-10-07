@@ -1,24 +1,22 @@
-# README
+# RiceVotes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is original content of Youtube.
+Ask the viewers to vote.
 
-Things you may want to cover:
+# Youtube
 
-* Ruby version
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/PXxIwdJKNCI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-* System dependencies
+# how to
 
-* Configuration
+```sh
+$ git clone git@github.com:RiceCookers/RiceVotes.git
+$ cd RiceVotes
+$ bundle install
+$ bundle exec rails db:migrate
+```
 
-* Database creation
+## using cloudinary
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+getting [cloudinary](https://cloudinary.com) api token and key.
+and setting env variables.
