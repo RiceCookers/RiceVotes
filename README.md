@@ -19,3 +19,4 @@ $ bundle exec rails db:migrate
 ## using cloudinary
 
 getting [cloudinary](https://cloudinary.com) api token and key.
+and setting env variables.
