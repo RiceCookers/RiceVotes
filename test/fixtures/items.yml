@@ -4,8 +4,3 @@ one:
   issue_id: 1
   name: MyString
   image: MyString
-
-two:
-  issue_id: 1
-  name: MyString
-  image: MyString
