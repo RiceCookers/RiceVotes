@@ -5,7 +5,7 @@ class VotesControllerTest < ActionController::TestCase
     @user = users(:one)
     @issue = issues(:one)
     @item = @issue.items.create(name: "name")
-    @controller.instance_variable_set(:@user, @user)
+    sign_in_as(@user)
   end
 
   test "controller has index action" do
